@@ -1,0 +1,144 @@
+body {
+    font-size: 15pt;
+    background-color: #32333D;
+}
+*{
+ padding: 0;
+ margin: 0;
+box-sizing: border-box;
+}
+.card{
+  position: fixed;
+ inset: 20px 0 20px;
+  width: 75px;
+  background-color: rgba(255, 255, 255, 1);
+ transition: .5s;
+ display: flex;
+ 
+ 
+}
+.card.open{
+  width: 250px;
+  transition: .6s;
+}
+.card .menu{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  border: 1px solid rgba( 0, 0, 0, 0, .25);
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.card.open .menu::before{
+  transform: translateY(0)
+  rotate(45deg);
+}
+.card .menu::before{
+  content: "";
+ position: absolute;
+ width: 30px;
+ height: 2px;
+ background: #333;
+ transform: translateY(-8px);
+
+ transition: .5s;
+}
+.card .menu::after{
+  content: "";
+ position: absolute;
+ width: 30px;
+ height: 2px;
+ background: #333;
+ transform: translateY(8px);
+ box-shadow: 0 -8px 0px #333;
+ transition: .5s;
+}
+.card.open .menu::after{
+  
+  transform: translateY(0)
+  rotate(-45deg);
+  box-shadow: 0 0 0 #333;
+}  
+.card ul {
+display: flex;
+  gap: 20px;
+  width: 100%;
+ padding: 0 10px;
+ display: flex;
+ justify-content: center;
+  flex-direction: column;
+}
+li{
+  list-style: none;
+}
+ li a{
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.card ul li a .icon{
+  position: relative;
+  display: block;
+  min-width: 50px;
+  height: 50px;
+  line-height: 50px;
+  color: #333;
+  transition: .5s;
+  border-radius: 10px;
+  font-size: 1.7rem;
+  text-align: center;
+}
+.card ul li.active a .icon{
+  color: #eee;
+ transition: .5s;
+ transition-delay: .5s;
+  background: var(--clc);
+}
+.card ul li a .icon::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--clc);
+  filter: blur(6px);
+  opacity: 0;
+  transition: .5s;
+}
+.card ul li.active a .icon::before{
+  opacity: .3;
+}
+.card li a .text{
+  position: relative;
+  padding: 0 15px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  color: #333;
+  visibility: hidden;
+  transition: .5s;
+}
+.card.open ul li a .text{
+  opacity: 1;
+  visibility: visible;
+}
+.card ul li.active a .text{
+  color: var(--clc);
+}
+.card ul li.active {
+  transform: translatex(30px);
+}
+.card.open ul li{
+  transition: .5s;
+}
+.card.open ul li.active{
+  transform: translatex(10px);
+}
